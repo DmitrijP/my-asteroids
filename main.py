@@ -13,19 +13,18 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
     running = True
+    p = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False  # This will break out of the main loop
-        
+                running = False
+        dt = clock.tick(60) / 100
         screen.fill(pygame.Color(0, 0, 0))
-        p = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+        p.update(dt)
         p.draw(screen)
         pygame.display.flip()
-        lt = clock.tick(60)
-        dt = lt / 1000
-
-    pygame.quit()  # Properly close Pygame
+        
+    pygame.quit()
 
 if __name__ == "__main__":
     main()
