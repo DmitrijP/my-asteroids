@@ -9,7 +9,8 @@ def main():
 
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    
+    clock = pygame.time.Clock()
+    dt = 0
     running = True
     while running:
         for event in pygame.event.get():
@@ -18,6 +19,8 @@ def main():
         
         screen.fill(pygame.Color(0, 0, 0))
         pygame.display.flip()
+        lt = clock.tick(60)
+        dt = lt / 1000
 
     pygame.quit()  # Properly close Pygame
 
