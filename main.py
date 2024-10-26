@@ -1,6 +1,7 @@
 
 import pygame
 from constants import *
+from player import Player
 
 def main():
     print("Starting asteroids!")
@@ -18,6 +19,8 @@ def main():
                 running = False  # This will break out of the main loop
         
         screen.fill(pygame.Color(0, 0, 0))
+        p = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+        p.draw(screen)
         pygame.display.flip()
         lt = clock.tick(60)
         dt = lt / 1000
