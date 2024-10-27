@@ -30,7 +30,7 @@ def main():
     p = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     af = AsteroidField()
     while running:
-        dt = clock.tick(60) / 100
+        dt = clock.tick(60) / 1000
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
