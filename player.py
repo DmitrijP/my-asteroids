@@ -6,6 +6,7 @@ import constants
 
 class Player(CircleShape):
     rotation = 0
+    containers = ()
     def __init__(self, x: int, y: int):
         self.x = x
         self.y = y
@@ -21,7 +22,7 @@ class Player(CircleShape):
     
     def draw(self, screen):
         pygame.draw.polygon(screen, 
-                            pygame.Color(255,255,255),
+                            "white",
                             self.triangle(), 
                             2)
         return super().draw(screen)
