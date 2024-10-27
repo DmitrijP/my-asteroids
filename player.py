@@ -6,6 +6,7 @@ from shot import Shot
 
 
 class Player(CircleShape):
+    timer = 0
     rotation = 0
     containers = ()
     def __init__(self, x: int, y: int):
@@ -33,7 +34,7 @@ class Player(CircleShape):
         
     def update(self, dt):
         keys = pygame.key.get_pressed()
-
+        self.timer -= dt
         if keys[pygame.K_a]:
             self.rotate(-dt)
         
@@ -54,6 +55,9 @@ class Player(CircleShape):
         self.position += forward * constants.PLAYER_SPEED * dt
     
     def shot(self):
+        if self.timer > 0:
+            return
+        self.timer = constants.PLAYER_SHOOT_COOLDOWN
         forward = pygame.Vector2(0, 1).rotate(self.rotation) 
         velocity = forward * constants.PLAYER_SHOOT_SPEED
         Shot(self.position.copy(), velocity)
