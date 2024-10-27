@@ -5,14 +5,16 @@ from circleshape import CircleShape
 import constants
 
 
-class Asteroid(CircleShape):
+class Shot(CircleShape):
     containers = ()
-    def __init__(self, x, y, radius):
-        self.x = x
-        self.y = y
-        self.radius = radius
-        self.position = pygame.Vector2(x, y)
-        super().__init__(x, y, self.radius)
+   
+    def __init__(self, position: pygame.Vector2, velocity: pygame.Vector2):
+        super().__init__(position.x, position.y, constants.SHOT_RADIUS)
+        self.position = position
+        self.velocity = velocity
+        for group in self.containers:
+            group.add(self)
+
     
     def draw(self, screen):
         pygame.draw.circle(surface= screen, 
