@@ -23,5 +23,5 @@ class CircleShape(pygame.sprite.Sprite):
     
     def collision(self, circleShape):
         dis = circleShape.position.distance_to(self.position)
-        return circleShape.radius * 2 > dis 
+        return circleShape.radius + self.radius > dis 
         
