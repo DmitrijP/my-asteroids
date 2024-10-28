@@ -64,7 +64,7 @@ def asteroidShotCollision(shots, a):
         sc = a.collision(s)
         if sc:
             s.kill()
-            a.kill()
+            a.split()
 
 if __name__ == "__main__":
     main()
